@@ -5,7 +5,7 @@
     { "repo": "ddosakura/changesets-scripts" }
   ],
   "commit": [
-    "@ddosakura/changesets/commit",
+    "@ddosakura/changesets-scripts/commit",
     {
       "prefix": "@ddosakura/"
     }
