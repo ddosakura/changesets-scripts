@@ -1,0 +1,38 @@
+{
+  "name": "@ddosakura/changesets",
+  "version": "0.0.0",
+  "description": "ddosakura's changesets scripts",
+  "author": "ddosakura",
+  "keywords": [
+    "changesets"
+  ],
+  "exports": {
+    ".": {
+      "require": "./dist/commit.js"
+    },
+    "./commit": {
+      "require": "./dist/commit.js"
+    }
+  },
+  "main": "./dist/commit.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "lint": "eslint --flag unstable_ts_config . --fix",
+    "test": "vitest --run",
+    "build:bak": "tsc src/*.ts --outDir dist --removeComments --target esnext --module commonjs",
+    "build": "tsc $(find src -name '*.ts' ! -name '*.test.ts') --outDir dist --removeComments --target esnext --module commonjs",
+    "changeset:beta": "changeset pre enter beta",
+    "changeset:exit": "changeset pre exit",
+    "publish-packages": "npm run build && changeset version && npx changeset publish"
+  },
+  "devDependencies": {
+    "@changesets/changelog-github": "^0.5.0",
+    "@changesets/cli": "^2.27.8",
+    "@changesets/types": "^6.0.0",
+    "outdent": "^0.8.0",
+    "typescript": "^5.6.2",
+    "vitest": "^2.1.1"
+  }
+}
