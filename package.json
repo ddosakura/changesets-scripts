@@ -1,7 +1,7 @@
 {
   "name": "@ddosakura/changesets-scripts",
   "homepage": "https://github.com/ddosakura/changesets-scripts",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "ddosakura's changesets scripts",
   "author": "ddosakura",
   "keywords": [
