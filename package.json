@@ -9,12 +9,18 @@
   ],
   "exports": {
     ".": {
+      "types": "./dist/commit.d.mts",
+      "import": "./dist/commit.mjs",
       "require": "./dist/commit.js"
     },
     "./commit": {
+      "types": "./dist/commit.d.mts",
+      "import": "./dist/commit.mjs",
       "require": "./dist/commit.js"
     }
   },
+  "types": "./dist/commit.d.mts",
+  "module": "./dist/commit.mjs",
   "main": "./dist/commit.js",
   "files": [
     "dist"
@@ -23,7 +29,9 @@
     "lint": "eslint --flag unstable_ts_config . --fix",
     "test": "vitest --run",
     "build:bak": "tsc src/*.ts --outDir dist --removeComments --target esnext --module commonjs",
-    "build": "tsc $(find src -name '*.ts' ! -name '*.test.ts') --outDir dist --removeComments --target esnext --module commonjs",
+    "build:cjs": "tsc $(find src -name '*.ts' ! -name '*.test.ts') --outDir dist --removeComments --target esnext --module commonjs",
+    "build:esm": "tsup",
+    "build": "npm run build:esm & npm run build:cjs",
     "changeset:beta": "changeset pre enter beta",
     "changeset:exit": "changeset pre exit",
     "publish-packages": "npm run build && changeset version && npx changeset publish"
@@ -36,6 +44,7 @@
     "eslint": "^9.10.0",
     "jiti": "^1.21.6",
     "outdent": "^0.8.0",
+    "tsup": "^8.3.0",
     "typescript": "~5.5.4",
     "vitest": "^2.1.1"
   }
